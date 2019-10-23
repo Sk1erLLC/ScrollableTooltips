@@ -10,7 +10,12 @@ import org.lwjgl.input.Mouse;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class GuiUtilsOverride {
+    public static int scrollY = 0;
+    public static boolean allowScrolling;
+    public static int scrollX = 0;
+
     /**
      * Draws a tooltip box on the screen with text in it.
      * Automatically positions the box relative to the mouse to match Mojang's implementation.
@@ -23,19 +28,15 @@ public class GuiUtilsOverride {
      * @param screenWidth  the available screen width for the tooltip to drawn in
      * @param screenHeight the available  screen height for the tooltip to drawn in
      * @param maxTextWidth the maximum width of the text in the tooltip box.
-     * Set to a negative number to have no max width.
      * @param font         the font for drawing the text in the tooltip box
      */
-    public static int scrollX = 0;
-    public static int scrollY = 0;
-    public static boolean allowScrolling;
-
-    public static void drawHoveringText(List<String> textLines, final int mouseX, final int mouseY, final int screenWidth, final int screenHeight, final int maxTextWidth, FontRenderer font) {
+    public static void drawHoveringText(List<String> textLines, int mouseX, int mouseY, int screenWidth, int screenHeight, int maxTextWidth, FontRenderer font) {
         if (!textLines.isEmpty()) {
             if (!allowScrolling) {
                 scrollX = 0;
                 scrollY = 0;
             }
+
             GlStateManager.disableRescaleNormal();
             RenderHelper.disableStandardItemLighting();
             GlStateManager.disableLighting();
@@ -56,8 +57,7 @@ public class GuiUtilsOverride {
             int tooltipX = mouseX + 12;
             if (tooltipX + tooltipTextWidth + 4 > screenWidth) {
                 tooltipX = mouseX - 16 - tooltipTextWidth;
-                if (tooltipX < 4) // if the tooltip doesn't fit on the screen
-                {
+                if (tooltipX < 4) { // if the tooltip doesn't fit on the screen
                     if (mouseX > screenWidth / 2) {
                         tooltipTextWidth = mouseX - 12 - 8;
                     } else {
@@ -74,7 +74,7 @@ public class GuiUtilsOverride {
 
             if (needsWrap) {
                 int wrappedTooltipWidth = 0;
-                List<String> wrappedTextLines = new ArrayList<String>();
+                List<String> wrappedTextLines = new ArrayList<>();
                 for (int i = 0; i < textLines.size(); i++) {
                     String textLine = textLines.get(i);
                     List<String> wrappedLine = font.listFormattedStringToWidth(textLine, tooltipTextWidth);
@@ -90,6 +90,7 @@ public class GuiUtilsOverride {
                         wrappedTextLines.add(line);
                     }
                 }
+
                 tooltipTextWidth = wrappedTooltipWidth;
                 textLines = wrappedTextLines;
 
@@ -113,6 +114,7 @@ public class GuiUtilsOverride {
             if (tooltipY + tooltipHeight + 6 > screenHeight) {
                 tooltipY = screenHeight - tooltipHeight - 6;
             }
+
             allowScrolling = tooltipY < 0;
             GlStateManager.pushMatrix();
             if (allowScrolling) {
@@ -135,20 +137,21 @@ public class GuiUtilsOverride {
 
                 if (scrollY + tooltipY > 6) {
                     scrollY = -tooltipY + 6;
-                } else if(scrollY + tooltipY + tooltipHeight + 6 <screenHeight) {
-                    scrollY = screenHeight - 6 - tooltipY  - tooltipHeight;
+                } else if (scrollY + tooltipY + tooltipHeight + 6 < screenHeight) {
+                    scrollY = screenHeight - 6 - tooltipY - tooltipHeight;
                 }
             }
+
             GlStateManager.translate(scrollX, scrollY, 0);
-            final int zLevel = 300;
-            final int backgroundColor = 0xF0100010;
+            int zLevel = 300;
+            int backgroundColor = 0xF0100010;
             GuiUtils.drawGradientRect(zLevel, tooltipX - 3, tooltipY - 4, tooltipX + tooltipTextWidth + 3, tooltipY - 3, backgroundColor, backgroundColor);
             GuiUtils.drawGradientRect(zLevel, tooltipX - 3, tooltipY + tooltipHeight + 3, tooltipX + tooltipTextWidth + 3, tooltipY + tooltipHeight + 4, backgroundColor, backgroundColor);
             GuiUtils.drawGradientRect(zLevel, tooltipX - 3, tooltipY - 3, tooltipX + tooltipTextWidth + 3, tooltipY + tooltipHeight + 3, backgroundColor, backgroundColor);
             GuiUtils.drawGradientRect(zLevel, tooltipX - 4, tooltipY - 3, tooltipX - 3, tooltipY + tooltipHeight + 3, backgroundColor, backgroundColor);
             GuiUtils.drawGradientRect(zLevel, tooltipX + tooltipTextWidth + 3, tooltipY - 3, tooltipX + tooltipTextWidth + 4, tooltipY + tooltipHeight + 3, backgroundColor, backgroundColor);
-            final int borderColorStart = 0x505000FF;
-            final int borderColorEnd = (borderColorStart & 0xFEFEFE) >> 1 | borderColorStart & 0xFF000000;
+            int borderColorStart = 0x505000FF;
+            int borderColorEnd = (borderColorStart & 0xFEFEFE) >> 1 | borderColorStart & 0xFF000000;
             GuiUtils.drawGradientRect(zLevel, tooltipX - 3, tooltipY - 3 + 1, tooltipX - 3 + 1, tooltipY + tooltipHeight + 3 - 1, borderColorStart, borderColorEnd);
             GuiUtils.drawGradientRect(zLevel, tooltipX + tooltipTextWidth + 2, tooltipY - 3 + 1, tooltipX + tooltipTextWidth + 3, tooltipY + tooltipHeight + 3 - 1, borderColorStart, borderColorEnd);
             GuiUtils.drawGradientRect(zLevel, tooltipX - 3, tooltipY - 3, tooltipX + tooltipTextWidth + 3, tooltipY - 3 + 1, borderColorStart, borderColorStart);
