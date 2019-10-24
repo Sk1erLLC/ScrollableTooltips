@@ -15,14 +15,14 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "1.0"
 group = "club.sk1er" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Scrollable Tooltips (1.10)"
+archivesBaseName = "Scrollable Tooltips (1.11)"
 
 sourceCompatibility = targetCompatibility = 1.8
 
 minecraft {
-    version = "1.10.2-12.18.3.2511"
+    version = "1.11.2-13.20.1.2588"
     runDir = "run"
-    mappings = "stable_29"
+    mappings = "stable_32"
     makeObfSourceJar = false
 }
 
