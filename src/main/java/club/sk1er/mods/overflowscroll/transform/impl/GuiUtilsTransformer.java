@@ -1,14 +1,9 @@
 package club.sk1er.mods.overflowscroll.transform.impl;
 
 import club.sk1er.mods.overflowscroll.transform.FramesTransformer;
-import jdk.internal.org.objectweb.asm.Opcodes;
 import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
-import org.objectweb.asm.tree.ClassNode;
-import org.objectweb.asm.tree.InsnList;
-import org.objectweb.asm.tree.InsnNode;
-import org.objectweb.asm.tree.MethodInsnNode;
-import org.objectweb.asm.tree.MethodNode;
-import org.objectweb.asm.tree.VarInsnNode;
+import org.objectweb.asm.Opcodes;
+import org.objectweb.asm.tree.*;
 
 public final class GuiUtilsTransformer implements FramesTransformer {
 
@@ -26,7 +21,7 @@ public final class GuiUtilsTransformer implements FramesTransformer {
                 method.instructions.clear();
                 method.localVariables.clear();
                 method.instructions.add(getMod());
-                System.out.println("Overrode drawHoveringText");
+                break;
             }
         }
     }
