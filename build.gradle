@@ -15,7 +15,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "1.0"
 group = "club.sk1er" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Scrollable Tooltips"
+archivesBaseName = "Scrollable Tooltips (1.9)"
 
 sourceCompatibility = targetCompatibility = 1.8
 
