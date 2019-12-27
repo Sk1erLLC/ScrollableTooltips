@@ -1,4 +1,3 @@
 <p>Scrollable tooltips allows you to scroll up/down (mouse wheel) or left/right (mouse wheel + shift) when an item's tooltip is 
 too long for the screen.</p>
-<br>
 <p><strong>1.8.9 requires the latest Forge version, 2318.</strong></p>
