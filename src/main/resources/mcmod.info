@@ -1,7 +1,7 @@
 [
 {
   "modid": "text_overflow_scroll",
-  "name": "Text Overflow Scroll",
+  "name": "Scrollable Tooltips",
   "description": "Allows scrolling when hovering over item tooltips that are too big.",
   "version": "${version}",
   "mcversion": "${mcversion}",
