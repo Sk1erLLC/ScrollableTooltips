@@ -6,6 +6,8 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+
+        flatDir dirs: 'libs'
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
@@ -15,7 +17,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = "1.0"
 group = "club.sk1er" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Scrollable Tooltips (1.8)"
+archivesBaseName = "Scrollable Tooltips"
 
 sourceCompatibility = targetCompatibility = 1.8
 
