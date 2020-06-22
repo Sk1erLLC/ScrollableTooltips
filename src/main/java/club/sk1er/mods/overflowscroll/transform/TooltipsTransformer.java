@@ -5,7 +5,7 @@ import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.FieldNode;
 import org.objectweb.asm.tree.MethodNode;
 
-public interface FramesTransformer {
+public interface TooltipsTransformer {
 
     String[] getClassNames();
 

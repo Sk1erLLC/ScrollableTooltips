@@ -1,11 +1,11 @@
 package club.sk1er.mods.overflowscroll.transform.impl;
 
-import club.sk1er.mods.overflowscroll.transform.FramesTransformer;
+import club.sk1er.mods.overflowscroll.transform.TooltipsTransformer;
 import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
-public final class GuiUtilsTransformer implements FramesTransformer {
+public final class GuiUtilsTransformer implements TooltipsTransformer {
 
     @Override
     public String[] getClassNames() {
