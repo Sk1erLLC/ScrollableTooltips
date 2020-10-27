@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 public class OverFlowScrollMod {
 
     public static final String MOD_ID = "text_overflow_scroll";
-    public static final String MOD_VERSION = "1.2";
+    public static final String MOD_VERSION = "1.3";
     public static final String MOD_NAME = "Text Overflow Scroll";
 
     @Mod.EventHandler
