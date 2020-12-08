@@ -1,7 +1,7 @@
-package club.sk1er.mods.overflowscroll.forge;
+package club.sk1er.mods.scrollabletooltips.forge;
 
-import club.sk1er.mods.overflowscroll.transform.TooltipsTransformer;
-import club.sk1er.mods.overflowscroll.transform.impl.GuiUtilsTransformer;
+import club.sk1er.mods.scrollabletooltips.transform.TooltipsTransformer;
+import club.sk1er.mods.scrollabletooltips.transform.impl.GuiUtilsTransformer;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.launchwrapper.IClassTransformer;

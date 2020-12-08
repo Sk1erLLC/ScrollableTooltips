@@ -1,6 +1,6 @@
-package club.sk1er.mods.overflowscroll.transform.impl;
+package club.sk1er.mods.scrollabletooltips.transform.impl;
 
-import club.sk1er.mods.overflowscroll.transform.TooltipsTransformer;
+import club.sk1er.mods.scrollabletooltips.transform.TooltipsTransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
@@ -67,7 +67,7 @@ public final class GuiUtilsTransformer implements TooltipsTransformer {
         insnList.add(new VarInsnNode(Opcodes.ILOAD, 4)); // screenHeight
         insnList.add(new VarInsnNode(Opcodes.ILOAD, tooltipYIndex));
         insnList.add(new VarInsnNode(Opcodes.ILOAD, tooltipHeightIndex));
-        insnList.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "club/sk1er/mods/overflowscroll/GuiUtilsOverride", "drawHoveringText", "(Ljava/util/List;III)V", false));
+        insnList.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "club/sk1er/mods/scrollabletooltips/GuiUtilsOverride", "drawHoveringText", "(Ljava/util/List;III)V", false));
         return insnList;
     }
 }

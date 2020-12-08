@@ -1,4 +1,4 @@
-package club.sk1er.mods.overflowscroll.transform;
+package club.sk1er.mods.scrollabletooltips.transform;
 
 import net.minecraftforge.fml.common.asm.transformers.deobf.FMLDeobfuscatingRemapper;
 import org.objectweb.asm.tree.AbstractInsnNode;

@@ -1,4 +1,4 @@
-package club.sk1er.mods.overflowscroll;
+package club.sk1er.mods.scrollabletooltips;
 
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.input.Keyboard;
