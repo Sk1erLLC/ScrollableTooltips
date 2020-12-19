@@ -259,6 +259,7 @@ configurations {
 }
 
 dependencies {
+    embed "net.modcore:Loader:1.5"
     if (FABRIC) {
         minecraft 'com.mojang:minecraft:' + [
                 11404: '1.14.4',
@@ -312,7 +313,7 @@ dependencies {
         exclude module: "kotlin-stdlib"
     }
 
-    implementation("club.sk1er:ModCore:554-${mcVersion}-SNAPSHOT")
+    implementation("club.sk1er:ModCore:627-${mcVersion}-SNAPSHOT")
 
     implementation("com.github.Sk1erLLC:HookInjection:b9ac92c31e") {
         exclude module: "koffee"
@@ -340,7 +341,7 @@ dependencies {
     if (mcVersion == 11502) {
         minecraft 'net.minecraftforge:forge:1.15.2-31.1.18'
     }
-    if (!FABRIC) {
+    if (!FABRIC && useMixin) {
         annotationProcessor 'org.spongepowered:mixin:0.8'
         embed('org.spongepowered:mixin:0.7.11-SNAPSHOT') {
             exclude module: 'launchwrapper'
@@ -463,7 +464,7 @@ jar {
         manifest {
             attributes "ModSide": "CLIENT",
                     "FMLCorePluginContainsFMLMod": "Yes, yes it does",
-                    "TweakClass": "club.sk1er.mods.scrollabletooltips.tweaker.LaunchTweaker",
+                    "TweakClass": "club.sk1er.mods.scrollabletooltips.tweaker.ScrollableTooltipsTweaker",
                     "TweakOrder": "0"
         }
     }
