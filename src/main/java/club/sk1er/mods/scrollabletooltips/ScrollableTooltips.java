@@ -1,9 +1,9 @@
 package club.sk1er.mods.scrollabletooltips;
 
+import gg.essential.api.EssentialAPI;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
-import net.modcore.api.ModCoreAPI;
 
 @Mod(modid = ScrollableTooltips.MOD_ID, name = ScrollableTooltips.MOD_NAME, version = ScrollableTooltips.MOD_VERSION, clientSideOnly = true)
 public class ScrollableTooltips {
@@ -17,7 +17,7 @@ public class ScrollableTooltips {
     public void loadComplete(FMLLoadCompleteEvent event) {
         //noinspection ConstantConditions
         if (!ForgeVersion.getVersion().contains("2318") && ForgeVersion.mcVersion.equalsIgnoreCase("1.8.9")) {
-            ModCoreAPI.getNotifications().push(
+            EssentialAPI.getNotifications().push(
                     "Outdated Forge",
                     "Scrollable Tooltips will not work on anything below Forge build 2318.\nPlease consider updating Forge."
             );
