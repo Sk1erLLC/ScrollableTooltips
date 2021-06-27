@@ -10,7 +10,7 @@ public class ScrollableTooltips {
 
     // todo: migrate modid to scrollable_tooltips
     public static final String MOD_ID = "text_overflow_scroll";
-    public static final String MOD_VERSION = "1.4";
+    public static final String MOD_VERSION = "1.4.0";
     public static final String MOD_NAME = "Scrollable Tooltips";
 
     @Mod.EventHandler
