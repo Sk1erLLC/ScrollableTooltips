@@ -4,7 +4,7 @@
   "name": "Scrollable Tooltips",
   "description": "Allows scrolling when hovering over item tooltips that are too big.",
   "version": "${version}",
-  "mcversion": "${mcversion}",
+  "mcversion": "${mcVersionStr}",
   "url": "",
   "updateUrl": "",
   "authorList": ["Sk1er"],
