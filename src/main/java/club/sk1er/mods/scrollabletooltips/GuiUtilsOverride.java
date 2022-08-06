@@ -1,7 +1,7 @@
 package club.sk1er.mods.scrollabletooltips;
 
-import net.minecraft.client.renderer.GlStateManager;
-import org.lwjgl.input.Keyboard;
+import gg.essential.universal.UKeyboard;
+import gg.essential.universal.UMatrixStack;
 import org.lwjgl.input.Mouse;
 
 import java.util.List;
@@ -21,17 +21,17 @@ public class GuiUtilsOverride {
      * @param textLines    the lines of text to be drawn in a hovering tooltip box.
      * @param screenHeight the available  screen height for the tooltip to drawn in
      */
-    public static void drawHoveringText(List<String> textLines, int screenHeight, int tooltipY, int tooltipHeight) {
+    public static void drawHoveringText(UMatrixStack matrixStack, List<String> textLines, int screenHeight, int tooltipY, int tooltipHeight) {
         if (!allowScrolling) {
             scrollX = 0;
             scrollY = 0;
         }
 
         allowScrolling = tooltipY < 0;
-        GlStateManager.pushMatrix();
+        matrixStack.push();
         if (allowScrolling) {
             int eventDWheel = Mouse.getDWheel();
-            if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+            if (UKeyboard.isShiftKeyDown()) {
                 if (eventDWheel < 0) {
                     scrollX += 10;
                 } else if (eventDWheel > 0) {
@@ -54,6 +54,7 @@ public class GuiUtilsOverride {
             }
         }
 
-        GlStateManager.translate(scrollX, scrollY, 0);
+        matrixStack.translate(scrollX, scrollY, 0);
+        matrixStack.applyToGlobalState();
     }
 }

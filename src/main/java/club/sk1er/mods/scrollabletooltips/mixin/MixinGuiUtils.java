@@ -1,6 +1,7 @@
 package club.sk1er.mods.scrollabletooltips.mixin;
 
 import club.sk1er.mods.scrollabletooltips.GuiUtilsOverride;
+import gg.essential.universal.UMatrixStack;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.fml.client.config.GuiUtils;
@@ -19,6 +20,8 @@ public class MixinGuiUtils {
     private static int scrollableTooltips$tooltipY = 0;
     @Unique
     private static int scrollableTooltips$tooltipHeight = 0;
+    @Unique
+    private static UMatrixStack scrollableTooltips$matrixStack = null;
 
     @ModifyVariable(
             method = "drawHoveringText",
@@ -53,7 +56,8 @@ public class MixinGuiUtils {
             remap = false
     )
     private static void scrollableTooltips$pushMatrixAndTranslate(List<String> textLines, int mouseX, int mouseY, int screenWidth, int screenHeight, int maxTextWidth, FontRenderer font, CallbackInfo ci) {
-        GuiUtilsOverride.drawHoveringText(textLines, screenHeight, scrollableTooltips$tooltipY, scrollableTooltips$tooltipHeight);
+        scrollableTooltips$matrixStack = new UMatrixStack();
+        GuiUtilsOverride.drawHoveringText(scrollableTooltips$matrixStack, textLines, screenHeight, scrollableTooltips$tooltipY, scrollableTooltips$tooltipHeight);
     }
 
     @Inject(
@@ -67,6 +71,9 @@ public class MixinGuiUtils {
             remap = false
     )
     private static void scrollableTooltips$popMatrix(List<String> textLines, int mouseX, int mouseY, int screenWidth, int screenHeight, int maxTextWidth, FontRenderer font, CallbackInfo ci) {
-        GlStateManager.popMatrix();
+        if (scrollableTooltips$matrixStack != null) {
+            scrollableTooltips$matrixStack.pop();
+            scrollableTooltips$matrixStack = null;
+        }
     }
 }
