@@ -48,7 +48,6 @@ public class MixinGuiUtils {
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraftforge/fml/client/config/GuiUtils;drawGradientRect(IIIIIII)V",
-                    shift = At.Shift.BEFORE,
                     ordinal = 0
             ),
             remap = false
