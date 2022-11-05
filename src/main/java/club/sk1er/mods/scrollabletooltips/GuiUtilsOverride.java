@@ -28,7 +28,6 @@ public class GuiUtilsOverride {
         }
 
         allowScrolling = tooltipY < 0;
-        matrixStack.push();
         if (allowScrolling) {
             int eventDWheel = Mouse.getDWheel();
             if (UKeyboard.isShiftKeyDown()) {

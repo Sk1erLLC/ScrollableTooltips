@@ -21,7 +21,7 @@ public class MixinGuiUtils {
     @Unique
     private static int scrollableTooltips$tooltipHeight = 0;
     @Unique
-    private static UMatrixStack scrollableTooltips$matrixStack = null;
+    private static final UMatrixStack scrollableTooltips$matrixStack = new UMatrixStack();
 
     @ModifyVariable(
             method = "drawHoveringText",
@@ -56,7 +56,7 @@ public class MixinGuiUtils {
             remap = false
     )
     private static void scrollableTooltips$pushMatrixAndTranslate(List<String> textLines, int mouseX, int mouseY, int screenWidth, int screenHeight, int maxTextWidth, FontRenderer font, CallbackInfo ci) {
-        scrollableTooltips$matrixStack = new UMatrixStack();
+        scrollableTooltips$matrixStack.push();
         GuiUtilsOverride.drawHoveringText(scrollableTooltips$matrixStack, textLines, screenHeight, scrollableTooltips$tooltipY, scrollableTooltips$tooltipHeight);
     }
 
@@ -71,9 +71,6 @@ public class MixinGuiUtils {
             remap = false
     )
     private static void scrollableTooltips$popMatrix(List<String> textLines, int mouseX, int mouseY, int screenWidth, int screenHeight, int maxTextWidth, FontRenderer font, CallbackInfo ci) {
-        if (scrollableTooltips$matrixStack != null) {
-            scrollableTooltips$matrixStack.pop();
-            scrollableTooltips$matrixStack = null;
-        }
+        scrollableTooltips$matrixStack.pop();
     }
 }
