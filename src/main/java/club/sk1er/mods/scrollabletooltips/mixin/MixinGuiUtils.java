@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
@@ -18,6 +19,8 @@ import java.util.List;
 public class MixinGuiUtils {
     @Unique
     private static int scrollableTooltips$tooltipY = 0;
+    @Unique
+    private static int scrollableTooltips$tooltipX = 0;
     @Unique
     private static int scrollableTooltips$tooltipHeight = 0;
     @Unique
@@ -31,7 +34,7 @@ public class MixinGuiUtils {
     )
     private static int scrollableTooltips$captureTooltipY(int tooltipY) {
         scrollableTooltips$tooltipY = tooltipY;
-        return tooltipY;
+        return 0;
     }
 
     @ModifyVariable(
@@ -43,6 +46,20 @@ public class MixinGuiUtils {
     private static int scrollableTooltips$captureTooltipHeight(int tooltipHeight) {
         scrollableTooltips$tooltipHeight = tooltipHeight;
         return tooltipHeight;
+    }
+
+    @ModifyVariable(
+            method = "drawHoveringText",
+            at = @At("STORE"),
+            name = "tooltipX",
+            slice = @Slice(
+                    from = @At(value = "NEW", target = "Ljava/util/ArrayList;<init>()V")
+            ),
+            remap = false
+    )
+    private static int scrollableTooltips$captureTooltipX(int tooltipX) {
+        scrollableTooltips$tooltipX = tooltipX;
+        return 0;
     }
 
 
@@ -57,6 +74,7 @@ public class MixinGuiUtils {
     )
     private static void scrollableTooltips$pushMatrixAndTranslate(List<String> textLines, int mouseX, int mouseY, int screenWidth, int screenHeight, int maxTextWidth, FontRenderer font, CallbackInfo ci) {
         scrollableTooltips$matrixStack.push();
+        scrollableTooltips$matrixStack.translate(scrollableTooltips$tooltipX, scrollableTooltips$tooltipY, 0.0);
         GuiUtilsOverride.drawHoveringText(scrollableTooltips$matrixStack, textLines, screenHeight, scrollableTooltips$tooltipY, scrollableTooltips$tooltipHeight);
     }
 

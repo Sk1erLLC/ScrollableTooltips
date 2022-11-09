@@ -11,6 +11,7 @@ public class GuiUtilsOverride {
     public static int scrollY = 0;
     public static boolean allowScrolling;
     public static int scrollX = 0;
+    public static double zoomFactor = 1.0;
 
     /**
      * Draws a tooltip box on the screen with text in it.
@@ -25,12 +26,15 @@ public class GuiUtilsOverride {
         if (!allowScrolling) {
             scrollX = 0;
             scrollY = 0;
+            zoomFactor = 1.0;
         }
 
         allowScrolling = tooltipY < 0;
         if (allowScrolling) {
             int eventDWheel = Mouse.getDWheel();
-            if (UKeyboard.isShiftKeyDown()) {
+            if (UKeyboard.isCtrlKeyDown()) {
+                zoomFactor *= (1.0 + 0.1 * Integer.signum(eventDWheel));
+            } else if (UKeyboard.isShiftKeyDown()) {
                 if (eventDWheel < 0) {
                     scrollX += 10;
                 } else if (eventDWheel > 0) {
@@ -54,6 +58,7 @@ public class GuiUtilsOverride {
         }
 
         matrixStack.translate(scrollX, scrollY, 0);
+        matrixStack.scale(zoomFactor, zoomFactor, 0.0);
         matrixStack.applyToGlobalState();
     }
 }
