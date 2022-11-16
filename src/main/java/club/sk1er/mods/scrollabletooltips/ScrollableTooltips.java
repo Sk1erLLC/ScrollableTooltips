@@ -1,8 +1,12 @@
 package club.sk1er.mods.scrollabletooltips;
 
+import club.sk1er.mods.scrollabletooltips.command.ScrollableTooltipsCommand;
 import gg.essential.api.EssentialAPI;
 import net.minecraftforge.common.ForgeVersion;
+import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 
 @Mod(modid = ScrollableTooltips.MOD_ID, name = ScrollableTooltips.MOD_NAME, version = ScrollableTooltips.MOD_VERSION, clientSideOnly = true)
@@ -12,6 +16,11 @@ public class ScrollableTooltips {
     public static final String MOD_ID = "text_overflow_scroll";
     public static final String MOD_VERSION = "1.4.0";
     public static final String MOD_NAME = "Scrollable Tooltips";
+
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent event) {
+        EssentialAPI.getCommandRegistry().registerCommand(new ScrollableTooltipsCommand());
+    }
 
     @Mod.EventHandler
     public void loadComplete(FMLLoadCompleteEvent event) {
