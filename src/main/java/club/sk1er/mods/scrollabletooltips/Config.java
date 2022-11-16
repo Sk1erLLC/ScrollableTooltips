@@ -30,6 +30,20 @@ public class Config extends Vigilant {
     )
     public static boolean verticalScrolling = true;
 
+    @Property(
+            name = "Tooltip Zooming", description = "Turns zooming on tooltips on/off.",
+            category = "General", subcategory = "General",
+            type = PropertyType.SWITCH
+    )
+    public static boolean zoom = true;
+
+    @Property(
+            name = "Start at the Top of Tooltips", description = "Changes tooltips to always show the top.",
+            category = "General", subcategory = "General",
+            type = PropertyType.SWITCH
+    )
+    public static boolean startAtTop = true;
+
     public static Config INSTANCE = new Config();
 
     public Config() {
@@ -41,6 +55,8 @@ public class Config extends Vigilant {
 
         addDependency("horizontalScrolling", "masterToggle");
         addDependency("verticalScrolling", "masterToggle");
+        addDependency("zoom", "masterToggle");
+        addDependency("startAtTop", "masterToggle");
 
     }
 }

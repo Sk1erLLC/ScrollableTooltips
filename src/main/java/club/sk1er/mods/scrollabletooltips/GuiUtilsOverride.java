@@ -25,7 +25,7 @@ public class GuiUtilsOverride {
     public static void drawHoveringText(UMatrixStack matrixStack, List<String> textLines, int screenHeight, int tooltipY, int tooltipHeight) {
         if (!allowScrolling) {
             scrollX = 0;
-            if (tooltipY < 0) {
+            if (tooltipY < 0 && Config.startAtTop) {
                 scrollY = -tooltipY + 6;
             } else {
                 scrollY = 0;
@@ -37,7 +37,7 @@ public class GuiUtilsOverride {
         allowScrolling = tooltipY < 0;
         if (allowScrolling) {
             int eventDWheel = Mouse.getDWheel();
-            if (UKeyboard.isCtrlKeyDown()) {
+            if (UKeyboard.isCtrlKeyDown() && Config.zoom) {
                 zoomFactor *= (1.0 + 0.1 * Integer.signum(eventDWheel));
             } else if (UKeyboard.isShiftKeyDown() && Config.horizontalScrolling) {
                 if (eventDWheel < 0) {
