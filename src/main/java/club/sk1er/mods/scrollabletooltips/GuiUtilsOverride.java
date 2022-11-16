@@ -29,19 +29,20 @@ public class GuiUtilsOverride {
             zoomFactor = 1.0;
         }
 
+        if (!Config.masterToggle) return;
         allowScrolling = tooltipY < 0;
         if (allowScrolling) {
             int eventDWheel = Mouse.getDWheel();
             if (UKeyboard.isCtrlKeyDown()) {
                 zoomFactor *= (1.0 + 0.1 * Integer.signum(eventDWheel));
-            } else if (UKeyboard.isShiftKeyDown()) {
+            } else if (UKeyboard.isShiftKeyDown() && Config.horizontalScrolling) {
                 if (eventDWheel < 0) {
                     scrollX += 10;
                 } else if (eventDWheel > 0) {
                     //Scrolling to access higher stuff
                     scrollX -= 10;
                 }
-            } else {
+            } else if (Config.verticalScrolling) {
                 if (eventDWheel < 0) {
                     scrollY -= 10;
                 } else if (eventDWheel > 0) {
