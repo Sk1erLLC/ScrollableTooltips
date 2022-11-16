@@ -13,7 +13,6 @@ import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent;
 @Mod(modid = ScrollableTooltips.MOD_ID, name = ScrollableTooltips.MOD_NAME, version = ScrollableTooltips.MOD_VERSION, clientSideOnly = true)
 public class ScrollableTooltips {
 
-    // todo: migrate modid to scrollable_tooltips
     public static final String MOD_ID = "scrollable_tooltips";
     public static final String MOD_VERSION = "1.4.0";
     public static final String MOD_NAME = "Scrollable Tooltips";
