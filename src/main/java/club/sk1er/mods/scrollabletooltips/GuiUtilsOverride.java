@@ -25,7 +25,11 @@ public class GuiUtilsOverride {
     public static void drawHoveringText(UMatrixStack matrixStack, List<String> textLines, int screenHeight, int tooltipY, int tooltipHeight) {
         if (!allowScrolling) {
             scrollX = 0;
-            scrollY = 0;
+            if (tooltipY < 0) {
+                scrollY = -tooltipY + 6;
+            } else {
+                scrollY = 0;
+            }
             zoomFactor = 1.0;
         }
 
