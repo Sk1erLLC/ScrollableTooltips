@@ -1,0 +1,3 @@
+net.minecraft.client.gui.inventory.GuiContainer net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
+net.minecraft.inventory.Slot net.minecraft.world.inventory.Slot
+net.minecraft.client.main.GameConfiguration net.minecraft.client.main.GameConfig

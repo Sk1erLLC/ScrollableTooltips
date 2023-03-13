@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "id": "scrollable_tooltips",
+  "version": "${version}",
+  "environment": "client",
+  "mixins": ["mixins.scrollabletooltips.json"]
+}

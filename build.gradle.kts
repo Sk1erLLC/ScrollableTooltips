@@ -9,7 +9,7 @@ plugins {
 val modGroup: String by project
 val modBaseName: String by project
 group = modGroup
-base.archivesName.set("$modBaseName-${platform.mcVersionStr}")
+base.archivesName.set("$modBaseName-${platform.mcVersionStr}-${platform.loaderStr}")
 
 loom {
     noServerRunConfigs()
@@ -46,6 +46,7 @@ tasks.jar {
             "ModSide" to "CLIENT",
             "FMLCorePluginContainsFMLMod" to "Yes, yes it does",
             "TweakClass" to "gg.essential.loader.stage0.EssentialSetupTweaker",
+            "MixinConfigs" to "mixins.scrollabletooltips.json",
             "TweakOrder" to "0"
         )
     )

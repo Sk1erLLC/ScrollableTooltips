@@ -2,7 +2,12 @@
   "compatibilityLevel": "JAVA_8",
   "package": "club.sk1er.mods.scrollabletooltips.mixin",
   "refmap": "mixins.scrollabletooltips.refmap.json",
-  "mixins": [
-    "MixinGuiUtils"
+  "client": [
+    "AccessorContainerScreen",
+    "MinecraftMixin",
+    "TooltipMixin"
+    //#if MC>11600
+    , "MouseMixin"
+    //#endif
   ]
 }

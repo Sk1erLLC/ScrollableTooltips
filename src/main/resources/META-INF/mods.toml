@@ -1,0 +1,10 @@
+modLoader="javafml"
+loaderVersion="[33,)"
+license="GPL v3.0"
+
+[[mods]]
+modId="scrollable_tooltips"
+version="${file.jarVersion}"
+displayName="Scrollable Tooltips"
+displayURL="https://sk1er.club/mods/text_overflow_scroll"
+description="Allows for scrolling on tooltips"
