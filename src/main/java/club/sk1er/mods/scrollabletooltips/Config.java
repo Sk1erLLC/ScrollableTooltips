@@ -1,9 +1,9 @@
 package club.sk1er.mods.scrollabletooltips;
 
-import gg.essential.universal.UMinecraft;
 import gg.essential.vigilance.Vigilant;
 import gg.essential.vigilance.data.Property;
 import gg.essential.vigilance.data.PropertyType;
+import net.minecraft.client.Minecraft;
 
 import java.io.File;
 
@@ -48,7 +48,7 @@ public class Config extends Vigilant {
 
     public Config() {
         super(
-                new File(UMinecraft.getMinecraft().mcDataDir, "config/scrollable_tooltips.toml"),
+                new File(Minecraft.getMinecraft().mcDataDir, "config/scrollable_tooltips.toml"),
                 "Scrollable Tooltips (" + ScrollableTooltips.MOD_VERSION + ")"
         );
         initialize();
