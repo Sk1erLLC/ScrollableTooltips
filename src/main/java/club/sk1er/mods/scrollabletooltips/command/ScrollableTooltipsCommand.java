@@ -1,17 +1,29 @@
 package club.sk1er.mods.scrollabletooltips.command;
 
 import club.sk1er.mods.scrollabletooltips.Config;
-import gg.essential.api.EssentialAPI;
-import gg.essential.api.commands.Command;
-import gg.essential.api.commands.DefaultHandler;
+import club.sk1er.mods.scrollabletooltips.ScrollableTooltips;
+import net.minecraft.command.CommandBase;
+import net.minecraft.command.CommandException;
+import net.minecraft.command.ICommandSender;
 
-public class ScrollableTooltipsCommand extends Command {
-    public ScrollableTooltipsCommand() {
-        super("scrollabletooltips", true, false);
+public class ScrollableTooltipsCommand extends CommandBase {
+    @Override
+    public int getRequiredPermissionLevel() {
+        return 0;
     }
 
-    @DefaultHandler
-    public void handle() {
-        EssentialAPI.getGuiUtil().openScreen(Config.INSTANCE.gui());
+    @Override
+    public String getCommandName() {
+        return "scrollabletooltips";
+    }
+
+    @Override
+    public String getCommandUsage(ICommandSender sender) {
+        return "scrollabletooltips";
+    }
+
+    @Override
+    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+        ScrollableTooltips.displayScreen = Config.INSTANCE.gui();
     }
 }
