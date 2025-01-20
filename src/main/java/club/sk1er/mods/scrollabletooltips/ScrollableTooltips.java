@@ -36,6 +36,7 @@ public class ScrollableTooltips {
         displayScreen = null;
     }
 
+    @SubscribeEvent
     public void joinWorld(WorldEvent.Load event) {
         //noinspection ConstantConditions
         if (!ForgeVersion.getVersion().contains("2318") && ForgeVersion.mcVersion.equalsIgnoreCase("1.8.9")) {
